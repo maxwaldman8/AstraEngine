@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace AstraEngine.Core;
 
 /// <summary>
@@ -9,7 +11,8 @@ public abstract class Component
     /// <summary>
     /// The <see cref="Entity"/> that this <see cref="Component"/> is attached to.
     /// </summary>
-    public Entity? Entity { get; internal set; }
+    [AllowNull]
+    public Entity Entity { get; internal set; }
 
     /// <summary>
     /// Executed when this component enters the game for the first time

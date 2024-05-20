@@ -2,9 +2,9 @@ using System.Diagnostics.CodeAnalysis;
 
 using AstraEngine.Core;
 
-namespace AstraEngine.RaylibRenderer;
+namespace AstraEngine.Simple2D;
 
-public abstract class Renderer2D : Component
+public abstract class Drawable : Component
 {
     [AllowNull]
     public Position2D Position { get; set; }
@@ -20,5 +20,5 @@ public abstract class Renderer2D : Component
             Entity?.AttachComponent(Position);
         }
     }
-    public abstract void Render();
+    public abstract void Draw(IRenderer2D renderer);
 }

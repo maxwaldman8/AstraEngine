@@ -155,4 +155,12 @@ public class Entity
         foreach (var child in _children) { child.Tick(deltaTime); }
     }
 
+    /// <summary>
+    /// Adds the specified Entity as a child of this component
+    /// </summary>
+    /// <param name="player"></param>
+    public void AddChild(Entity player)
+    {
+        player.Parent = this;
+    }
 }

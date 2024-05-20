@@ -15,8 +15,10 @@ public static class Engine
         double lastTime = game.CurrentTime;
         while (game.IsRunning)
         {
-            game.Root.Tick(game.CurrentTime - lastTime);
-            lastTime = game.CurrentTime;
+            double start = game.CurrentTime;
+            double delta = start - lastTime;
+            game.Root.Tick(delta);
+            lastTime = start;
         }
     }
 }
