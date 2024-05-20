@@ -38,7 +38,7 @@ jobs:
     - name: Generate coverage report
       uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
       with:
-        reports: Tests/coverage.cobertura.xml
+        reports: AstraEngine.Core.Tests/coverage.cobertura.xml
         targetdir: docs/coverage
         reporttypes: MarkdownSummaryGithub;Html
 

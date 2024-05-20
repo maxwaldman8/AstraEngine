@@ -28,8 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Console\Console.csproj" />
-    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\AstraEngine.Core\AstraEngine.Core.csproj" />
   </ItemGroup>
 
 </Project>
