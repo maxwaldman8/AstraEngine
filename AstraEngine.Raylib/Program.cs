@@ -1,25 +1,18 @@
-﻿using Model;
+﻿using AstraEngine.Core;
+using AstraEngine.RaylibRenderer;
 
-Console.Clear();
-Console.WriteLine("Welcome to Adder!");
-int x = Prompt<int>("Enter an integer", int.TryParse);
-int y = Prompt<int>("Enter an integer", int.TryParse);
-int result = MathUtils.Add(x, y);
-Console.WriteLine($"The result is: {result}");
+using Raylib_cs;
 
-static T Prompt<T>(string prompt, TryParse<T> tryParse)
+Rectangle2D sq = new()
 {
-    Console.WriteLine(prompt);
-    Console.Write(" > ");
-    string input = Console.ReadLine()!;
-    if (tryParse.Invoke(input, out T result))
-    {
-        return result;
-    }
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Invalid input");
-    Console.ResetColor();
-    return Prompt(prompt, tryParse);
-}
+    Position = new Position2D { X = 50, Y = 50 },
+    Width = 50,
+    Height = 50,
+    Color = Color.White,
+};
+Entity entity = new() { Components = [sq] };
+WindowedGame game = new();
 
-delegate bool TryParse<T>(string toParse, out T result);
+entity.Parent = game.Root;
+
+Engine.Run(game);
