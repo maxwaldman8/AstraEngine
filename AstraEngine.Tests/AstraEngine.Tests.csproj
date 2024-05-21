@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AstraEngine.Core\AstraEngine.Core.csproj" />
+    <ProjectReference Include="..\AstraEngine.Canvas2D\AstraEngine.Canvas2D.csproj" />
   </ItemGroup>
 
 </Project>

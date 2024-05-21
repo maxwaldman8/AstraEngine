@@ -5,12 +5,12 @@ Entity player = new();
 player.AttachComponent(
     new Rectangle2D()
     {
-        Position = new Position2D { X = 50, Y = 50 },
         Width = 50,
         Height = 50,
         Color = Color.White,
     }
 );
+player.AttachComponent(new Position2D { X = 50, Y = 50 });
 player.AttachComponent(new PlayerController());
 
 WindowedGame game = new();

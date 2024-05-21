@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\AstraEngine.RaylibRenderer\AstraEngine.RaylibRenderer.csproj" />
-    <ProjectReference Include="..\AstraEngine.Simple2D\AstraEngine.Simple2D.csproj" />
+    <ProjectReference Include="..\AstraEngine.RaylibCanvas2D\AstraEngine.RaylibCanvas2D.csproj" />
+    <ProjectReference Include="..\AstraEngine.Canvas2D\AstraEngine.Canvas2D.csproj" />
   </ItemGroup>
 
   <ItemGroup>

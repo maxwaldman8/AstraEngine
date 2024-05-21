@@ -1,7 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics;
-using Raylib_cs;
+using System.Diagnostics.CodeAnalysis;
+
 using AstraEngine.Core;
+
+using Raylib_cs;
 
 namespace AstraEngine.Simple2D;
 

@@ -9,7 +9,7 @@ public sealed class WindowedGame : IGame
     public int Width { get; init; } = 640;
     public int Height { get; init; } = 480;
     public string Title { get; init; } = "Untitled Game";
-    public Entity Root { get; } = new Entity() { Components = [new View() { Renderer = new RaylibRenderer2D() }] };
+    public Entity Root { get; } = new Entity() { Components = [new View() { Canvas = new RaylibCanvas2D() }] };
     public bool IsRunning => !Raylib.WindowShouldClose();
     public double CurrentTime => Raylib.GetTime();
     public void Initialize()
