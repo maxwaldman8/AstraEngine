@@ -2,7 +2,7 @@
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
-namespace AstraEngine.YAMLParser;
+namespace AstraEngine.Serialization;
 
 public class Parser {
     public static T Deserialize<T>(string input) => new DeserializerBuilder().WithNodeTypeResolver(new StringToType()).Build().Deserialize<T>(input);
