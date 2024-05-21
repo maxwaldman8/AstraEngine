@@ -142,15 +142,21 @@ public class Entity
     public void Tick(double deltaTime)
     {
         // All uninitialized components are initialized
-        IEnumerable<Component> components = [.. _uninitializedComponents];
-        _uninitializedComponents.Clear();
-        foreach (var component in components) { component.Initialize(); }
+        InitializeComponents();
 
         // Tick each component
         foreach (var component in _components) { component.Tick(deltaTime); }
 
         // Tick each child
         foreach (var child in _children) { child.Tick(deltaTime); }
+    }
+
+    private void InitializeComponents()
+    {
+        IEnumerable<Component> components = [.. _uninitializedComponents];
+        _uninitializedComponents.Clear();
+        foreach (var component in components) { component.Initialize(); }
+        foreach (var child in _children) { child.InitializeComponents(); }
     }
 
     /// <summary>

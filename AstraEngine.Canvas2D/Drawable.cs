@@ -21,14 +21,14 @@ public abstract class Drawable : Component
     /// </summary>
     public override void Initialize()
     {
-        if (Entity?.GetComponent<Position2D>() is Position2D position)
+        if (Entity.GetComponent<Position2D>() is Position2D position)
         {
             Position = position;
         }
         else
         {
             Position = new Position2D();
-            Entity?.AttachComponent(Position);
+            Entity.AttachComponent(Position);
         }
     }
 
