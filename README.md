@@ -1,5 +1,15 @@
 # AstraEngine
 
+A small game engine for learning and fun!
+
+## Contribution Guidelines
+
+1. When possible, open an issue first to create a space for discussion
+2. When creating a Pull Request reference the issue
+3. Whenever possible provide unit tests showing use cases for new features
+4. Whenever possible provide an example project in `AstraEngine.Examples`
+5. Large PRs are discouraged, when possible break large PRs into smaller components
+
 ## Generating Test Coverage
 
 This requires ReportGenerator: [LINK](https://github.com/danielpalme/ReportGenerator)
