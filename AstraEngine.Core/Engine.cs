@@ -20,5 +20,6 @@ public static class Engine
             game.Root.Tick(delta);
             lastTime = start;
         }
+        game.OnExit();
     }
 }

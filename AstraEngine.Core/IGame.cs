@@ -17,4 +17,9 @@ public interface IGame
     /// Initializes the game. This method is called exactly once before the main game loop.
     /// </summary>
     public void Initialize();
+
+    /// <summary>
+    /// Executed after the game has finished running.
+    /// </summary>
+    public void OnExit();
 }

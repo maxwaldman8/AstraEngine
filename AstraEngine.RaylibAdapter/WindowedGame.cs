@@ -23,6 +23,8 @@ public sealed class WindowedGame : IGame
     public bool IsRunning => !Raylib.WindowShouldClose();
     /// <inheritdoc/>
     public double CurrentTime => Raylib.GetTime();
+    /// <inheritdoc/>
+    public void OnExit() => Raylib.CloseWindow();
     /// <summary>
     /// Opens the window
     /// </summary>
