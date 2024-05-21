@@ -23,7 +23,7 @@ public sealed class MovementController : Component
     }
     public override void Tick(double delta)
     {
-        // Check for key's being pressed and move the player
+        // Check for keys being pressed and move the player
         // based on the speed and amount of time that has passed
         if (Input.Shared.IsKeyDown(KeyCode.Left))
         {
