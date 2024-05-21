@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AstraEngine.RaylibAdapter\AstraEngine.RaylibAdapter.csproj" />
-    <ProjectReference Include="..\AstraEngine.Canvas2D\AstraEngine.Canvas2D.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
