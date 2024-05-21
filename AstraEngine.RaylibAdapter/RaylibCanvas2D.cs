@@ -1,16 +1,13 @@
 ﻿using AstraEngine.Core;
-using AstraEngine.Simple2D;
 
 using Raylib_cs;
 
-using Color = AstraEngine.Simple2D.Color;
-
-namespace AstraEngine.RaylibRenderer;
+namespace AstraEngine.Canvas2D;
 
 /// <summary>
 /// An implementation of the <see cref="ICanvas2D"/> that is compatible with Raylib-cs.
 /// </summary>
-public class RaylibCanvas2D : ICanvas2D
+public sealed class RaylibCanvas2D : ICanvas2D
 {
     /// <inheritdoc/>
     public void BeginDrawing() => Raylib.BeginDrawing();

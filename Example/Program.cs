@@ -1,5 +1,6 @@
 ﻿using AstraEngine.Core;
-using AstraEngine.Simple2D;
+using AstraEngine.Canvas2D;
+using AstraEngine.Canvas2D.RaylibAdapter;
 
 Entity player = new();
 player.AttachComponent(

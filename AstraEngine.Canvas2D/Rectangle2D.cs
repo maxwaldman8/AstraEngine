@@ -1,4 +1,4 @@
-namespace AstraEngine.Simple2D;
+namespace AstraEngine.Canvas2D;
 
 /// <summary>
 /// Represents a Rectangle that can be drawn in 2D space

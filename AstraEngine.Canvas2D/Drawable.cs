@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using AstraEngine.Core;
 
-namespace AstraEngine.Simple2D;
+namespace AstraEngine.Canvas2D;
 
 /// <summary>
 /// Represents a component that can be drawn to a screen. An <see cref="Entity"/> that is Drawable is required to have a

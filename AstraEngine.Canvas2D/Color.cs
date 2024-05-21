@@ -1,4 +1,4 @@
-namespace AstraEngine.Simple2D;
+namespace AstraEngine.Canvas2D;
 
 /// <summary>Represents an RGBA color</summary>
 public record struct Color(byte R, byte G, byte B, byte A)

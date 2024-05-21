@@ -1,6 +1,4 @@
-using AstraEngine.Simple2D;
-
-namespace AstraEngine.RaylibRenderer;
+namespace AstraEngine.Canvas2D;
 
 /// <summary>Extension methods for converting Colors to Raylib.Color</summary>
 public static class ColorExtensions

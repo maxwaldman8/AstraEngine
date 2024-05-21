@@ -1,6 +1,6 @@
 using AstraEngine.Core;
 
-namespace AstraEngine.Simple2D;
+namespace AstraEngine.Canvas2D;
 
 /// <summary>A <see cref="ICanvas2D"/> provides methods for drawing in 2D space.</summary>
 public interface ICanvas2D

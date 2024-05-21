@@ -1,5 +1,5 @@
 using AstraEngine.Core;
-namespace AstraEngine.Simple2D;
+namespace AstraEngine.Canvas2D;
 
 /// <summary>
 /// Represents a 2D view port that draws itself and all children each tick. Children components

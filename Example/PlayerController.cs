@@ -2,10 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 using AstraEngine.Core;
-
-using Raylib_cs;
-
-namespace AstraEngine.Simple2D;
+using AstraEngine.InputSystem;
 
 public class PlayerController : Component
 {
@@ -20,19 +17,19 @@ public class PlayerController : Component
     }
     public override void Tick(double delta)
     {
-        if (Raylib.IsKeyDown(KeyboardKey.Left))
+        if (Input.Shared.IsKeyDown(KeyCode.Left))
         {
             _position2D.X -= Speed * delta;
         }
-        if (Raylib.IsKeyDown(KeyboardKey.Right))
+        if (Input.Shared.IsKeyDown(KeyCode.Right))
         {
             _position2D.X += Speed * delta;
         }
-        if (Raylib.IsKeyDown(KeyboardKey.Up))
+        if (Input.Shared.IsKeyDown(KeyCode.Up))
         {
             _position2D.Y -= Speed * delta;
         }
-        if (Raylib.IsKeyDown(KeyboardKey.Down))
+        if (Input.Shared.IsKeyDown(KeyCode.Down))
         {
             _position2D.Y += Speed * delta;
         }
