@@ -1,6 +1,6 @@
-using AstraEngine.Core;
 using AstraEngine.Canvas2D;
 using AstraEngine.Canvas2D.RaylibAdapter;
+using AstraEngine.Core;
 
 namespace AstraEngine.Examples.PlayerMovement;
 

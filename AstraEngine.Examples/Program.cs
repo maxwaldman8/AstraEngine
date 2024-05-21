@@ -3,8 +3,8 @@ using AstraEngine.Examples.PlayerMovement;
 
 (string name, Action action)[] examples =
 [
-    ( "Player Movement", PlayerMovementExample.Run ),
-    ( "Exit", () => Environment.Exit(0) ),
+    ("Player Movement", PlayerMovementExample.Run),
+    ("Exit", () => Environment.Exit(0)),
 ];
 
 Run();
@@ -35,4 +35,3 @@ void Run()
         }
     }
 }
-
