@@ -39,7 +39,7 @@
       "_appName": "AstraEngine Documentation",
       "_appTitle": "AstraEngine Documentation",
       "_enableSearch": true,
-      "pdf": true
+      "pdf": false
     }
   }
 }
