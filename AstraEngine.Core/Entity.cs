@@ -9,9 +9,9 @@ namespace AstraEngine.Core;
 public class Entity
 {
     /// <summary>Name for the entity</summary>
-    public required string Name { get; set; }
+    public string Name { get; set; } = "";
     /// <summary>Whether or not this <see cref="Entity"/> is active</summary>
-    public required bool Active { get; set; } = true;
+    public bool Active { get; set; } = true;
     private readonly HashSet<Component> _uninitializedComponents = [];
     private readonly HashSet<Component> _components = [];
     /// <summary>An enumerable containing all of the components attached to this <see cref="Entity"/>.</summary>
