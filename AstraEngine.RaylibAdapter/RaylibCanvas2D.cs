@@ -1,4 +1,6 @@
-﻿using Raylib_cs;
+﻿using System.Numerics;
+
+using Raylib_cs;
 
 namespace AstraEngine.Canvas2D;
 
@@ -15,6 +17,14 @@ public sealed class RaylibCanvas2D : ICanvas2D
     public void DrawRectangle(Position2D topLeft, double width, double height, Color color)
     {
         Raylib.DrawRectangleRec(new Rectangle((float)topLeft.X, (float)topLeft.Y, (float)width, (float)height), color.ToRayColor());
+    }
+    /// <inheritdoc/>
+    public void DrawTriangle(Vector2 top, Vector2 bottomLeft, Vector2 bottomRight, Color color, Position2D position)
+    {
+        Vector2 newTop = new(top.X + (float)position.X, top.Y + (float)position.Y);
+        Vector2 newLeft = new(bottomLeft.X + (float)position.X, bottomLeft.Y + (float)position.Y);
+        Vector2 newRight = new(bottomRight.X + (float)position.X, bottomRight.Y + (float)position.Y);
+        Raylib.DrawTriangle(newTop, newLeft, newRight, color.ToRayColor());
     }
 
     /// <inheritdoc/>
