@@ -8,6 +8,10 @@ namespace AstraEngine.Core;
 /// </summary>
 public class Entity
 {
+    /// <summary>Name for the entity</summary>
+    public required string Name { get; set; }
+    /// <summary>Whether or not this <see cref="Entity"/> is active</summary>
+    public required bool Active { get; set; } = true;
     private readonly HashSet<Component> _uninitializedComponents = [];
     private readonly HashSet<Component> _components = [];
     /// <summary>An enumerable containing all of the components attached to this <see cref="Entity"/>.</summary>
@@ -145,10 +149,28 @@ public class Entity
         InitializeComponents();
 
         // Tick each component
-        foreach (var component in _components) { component.Tick(deltaTime); }
+        foreach (var component in _components)
+        {
+            if (component.Active) { component.Tick(deltaTime); }
+        }
 
         // Tick each child
-        foreach (var child in _children) { child.Tick(deltaTime); }
+        foreach (var child in _children)
+        {
+            if (child.Active) { child.Tick(deltaTime); }
+        }
+    }
+
+    /// <summary>
+    /// Executed when this component exits the game
+    /// </summary>
+    public void Exit()
+    {
+        // Exit each component
+        foreach (var component in _components) { component.Exit(); }
+
+        // Exit each child
+        foreach (var child in _children) { child.Exit(); }
     }
 
     private void InitializeComponents()
@@ -160,11 +182,63 @@ public class Entity
     }
 
     /// <summary>
+    /// Retrieves a child with the specified name.
+    /// </summary>
+    /// <param name="name">The name to search for</param>
+    /// <param name="child">The child that was found</param>
+    /// <returns>true if a component of the specified type was found and false otherwise</returns>
+    public bool TryGetChild(string name, [NotNullWhen(true)] out Entity? child)
+    {
+        foreach (var c in _children)
+        {
+            if (c.Name == name)
+            {
+                child = c;
+                return true;
+            }
+        }
+        child = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Retrieves a child with the specified name.
+    /// </summary>
+    /// <param name="name">The name to search for</param>
+    /// <returns>Entity if a child with the specified name was found and null otherwise</returns>
+    public Entity? GetChild(string name)
+    {
+        foreach (var c in _children)
+        {
+            if (c.Name == name) { return c; }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Returns an enumerable of all children with the specified name
+    /// </summary>
+    public IEnumerable<Entity> GetChildren(string name)
+    {
+        return _children.Where(c => c.Name == name);
+    }
+
+    /// <summary>
     /// Adds the specified Entity as a child of this component
     /// </summary>
     /// <param name="player"></param>
     public void AddChild(Entity player)
     {
         player.Parent = this;
+    }
+
+    /// <summary>
+    /// Removes the specified Entity as a child of this component
+    /// </summary>
+    /// <param name="player"></param>
+    public void RemoveChild(Entity player)
+    {
+        player.Parent = null;
+        _children.Remove(player);
     }
 }

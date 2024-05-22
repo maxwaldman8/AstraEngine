@@ -13,6 +13,8 @@ public abstract class Component
     /// </summary>
     [AllowNull]
     public Entity Entity { get; internal set; }
+    /// <summary>Whether or not this <see cref="Component"/> is active</summary>
+    public bool Active { get; set; } = true;
 
     /// <summary>
     /// Executed when this component enters the game for the first time
@@ -27,6 +29,14 @@ public abstract class Component
     /// </summary>
     /// <param name="delta">The amount of time in seconds that has passed</param>
     public virtual void Tick(double delta)
+    {
+
+    }
+
+    /// <summary>
+    /// Executed when this component exits the game
+    /// </summary>
+    public virtual void Exit()
     {
 
     }
