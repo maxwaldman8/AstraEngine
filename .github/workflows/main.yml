@@ -50,6 +50,8 @@ jobs:
 
   comment-report:
     if: ${{ github.event_name == 'pull_request' }}
+    permissions:
+      pull-requests: write
     needs: build
     runs-on: ubuntu-latest
     steps:
