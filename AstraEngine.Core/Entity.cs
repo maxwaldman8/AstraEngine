@@ -145,20 +145,16 @@ public class Entity
     /// <param name="deltaTime">The amount of time in seconds that has passed</param>
     public void Tick(double deltaTime)
     {
+        if (!Active) { return; }
+
         // All uninitialized components are initialized
         InitializeComponents();
 
         // Tick each component
-        foreach (var component in _components)
-        {
-            if (component.Active) { component.Tick(deltaTime); }
-        }
+        foreach (var component in _components) if (component.Active) { component.Tick(deltaTime); }
 
         // Tick each child
-        foreach (var child in _children)
-        {
-            if (child.Active) { child.Tick(deltaTime); }
-        }
+        foreach (var child in _children) { child.Tick(deltaTime); }
     }
 
     /// <summary>
@@ -205,7 +201,7 @@ public class Entity
     /// Retrieves a child with the specified name.
     /// </summary>
     /// <param name="name">The name to search for</param>
-    /// <returns>Entity if a child with the specified name was found and null otherwise</returns>
+    /// <returns><see cref="Entity"/> if a child with the specified name was found and null otherwise</returns>
     public Entity? GetChild(string name)
     {
         foreach (var c in _children)
@@ -213,6 +209,16 @@ public class Entity
             if (c.Name == name) { return c; }
         }
         return null;
+    }
+
+    /// <summary>
+    /// Retrieves this <see cref="Entity"/>'s first child
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns><see cref="Entity"/> if this <see cref="Entity"/> has a child else null</returns>
+    public Entity? GetChild(int index)
+    {
+        return Children.ToArray()[index];
     }
 
     /// <summary>
