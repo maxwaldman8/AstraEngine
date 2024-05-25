@@ -1,6 +1,6 @@
 using AstraEngine.Core;
 
-using Raylib_cs;
+using Raylib_CsLo;
 
 namespace AstraEngine.Canvas2D.RaylibAdapter;
 
