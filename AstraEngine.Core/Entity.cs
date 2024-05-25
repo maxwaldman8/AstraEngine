@@ -263,13 +263,13 @@ public class Entity
     /// <summary>
     /// Adds the specified Entity as a child of this component
     /// </summary>
-    /// <param name="player"><see cref="Entity"/> to add as a child</param>
+    /// <param name="child"><see cref="Entity"/> to add as a child</param>
     /// <returns>true if the child was added and false if the child was already present</returns>
-    public bool AddChild(Entity player)
+    public bool AddChild(Entity child)
     {
-        if (_children.Add(player))
+        if (_children.Add(child))
         {
-            player.Parent = this;
+            child.Parent = this;
             return true;
         }
         return false;
@@ -278,14 +278,14 @@ public class Entity
     /// <summary>
     /// Removes the specified Entity as a child of this component
     /// </summary>
-    /// <param name="player">Child to remove</param>
+    /// <param name="child">Child to remove</param>
     /// <returns>true if the child was found and removed and false otherwise.</returns>
-    public bool RemoveChild(Entity player)
+    public bool RemoveChild(Entity child)
     {
-        if (_children.Remove(player))
+        if (_children.Remove(child))
         {
-            player.Exit();
-            player.Parent = null;
+            child.Exit();
+            child.Parent = null;
             return true;
         }
         return false;
