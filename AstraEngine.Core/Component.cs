@@ -14,7 +14,7 @@ public abstract class Component
     [AllowNull]
     public Entity Entity { get; internal set; }
     /// <summary>Whether or not this <see cref="Component"/> is active</summary>
-    public bool Active { get; set; } = true;
+    public bool IsActive { get; set; } = true;
 
     /// <summary>
     /// Executed when the game first starts

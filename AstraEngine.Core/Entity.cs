@@ -9,9 +9,9 @@ namespace AstraEngine.Core;
 public class Entity
 {
     /// <summary>Name for this <see cref="Entity"/></summary>
-    public string Name { get; set; } = "";
+    public string Name { get; set; } = String.Empty;
     /// <summary>Whether or not this <see cref="Entity"/> is active</summary>
-    public bool Active { get; set; } = true;
+    public bool IsActive { get; set; } = true;
     private readonly HashSet<Component> _uninitializedComponents = [];
     private readonly HashSet<Component> _components = [];
     /// <summary>An enumerable containing all of the <see cref="Component"/>s attached to this <see cref="Entity"/></summary>
@@ -144,10 +144,10 @@ public class Entity
     /// </summary>
     public void Start()
     {
-        if (!Active) { return; }
+        if (!IsActive) { return; }
 
         // Start each component
-        foreach (var component in _components) if (component.Active) { component.Start(); }
+        foreach (var component in _components) if (component.IsActive) { component.Start(); }
 
         // Start each child
         foreach (var child in _children) { child.Start(); }
@@ -160,13 +160,13 @@ public class Entity
     /// <param name="deltaTime">The amount of time in seconds that has passed</param>
     public void Tick(double deltaTime)
     {
-        if (!Active) { return; }
+        if (!IsActive) { return; }
 
         // All uninitialized components are initialized
         InitializeComponents();
 
         // Tick each component
-        foreach (var component in _components) if (component.Active) { component.Tick(deltaTime); }
+        foreach (var component in _components) if (component.IsActive) { component.Tick(deltaTime); }
 
         // Tick each child
         foreach (var child in _children) { child.Tick(deltaTime); }
@@ -189,10 +189,10 @@ public class Entity
     /// </summary>
     public void End()
     {
-        if (!Active) { return; }
+        if (!IsActive) { return; }
 
         // Start each component
-        foreach (var component in _components) if (component.Active) { component.End(); }
+        foreach (var component in _components) if (component.IsActive) { component.End(); }
 
         // Start each child
         foreach (var child in _children) { child.End(); }

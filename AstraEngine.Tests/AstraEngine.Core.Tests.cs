@@ -32,7 +32,7 @@ public class AstraEngineCoreTest
     public void ComponentShouldNotTickWhenNotActive()
     {
         Entity entity = new();
-        entity.AttachComponent(new TickComponent() { Active = false });
+        entity.AttachComponent(new TickComponent() { IsActive = false });
         entity.Tick(1);
         entity.GetComponent<TickComponent>()!.Ticked.ShouldBe(0);
     }
@@ -43,7 +43,7 @@ public class AstraEngineCoreTest
         Entity entity = new();
         entity.AddChild(new());
         entity.GetChild(0)!.AttachComponent(new TickComponent());
-        entity.GetChild(0)!.Active = false;
+        entity.GetChild(0)!.IsActive = false;
         entity.Tick(1);
         entity.GetChild(0)!.GetComponent<TickComponent>()!.Ticked.ShouldBe(0);
     }
@@ -54,7 +54,7 @@ public class AstraEngineCoreTest
         Entity entity = new();
         entity.AddChild(new());
         entity.GetChild(0)!.AttachComponent(new TickComponent());
-        entity.Active = false;
+        entity.IsActive = false;
         entity.Tick(1);
         entity.GetChild(0)!.GetComponent<TickComponent>()!.Ticked.ShouldBe(0);
     }
