@@ -1,7 +1,8 @@
 using AstraEngine.Core;
 
-using Xunit;
 using Shouldly;
+
+using Xunit;
 
 namespace AstraEngine.Tests;
 
