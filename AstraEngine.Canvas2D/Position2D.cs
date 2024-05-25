@@ -1,4 +1,6 @@
-namespace AstraEngine.Core;
+using AstraEngine.Core;
+
+namespace AstraEngine.Canvas2D;
 
 /// <summary>
 /// Represents a location in 2D space

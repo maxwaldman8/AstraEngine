@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
+using AstraEngine.Canvas2D;
 using AstraEngine.Core;
 using AstraEngine.InputSystem;
 
