@@ -17,7 +17,15 @@ public abstract class Component
     public bool Active { get; set; } = true;
 
     /// <summary>
-    /// Executed when this component enters the game for the first time
+    /// Executed when the game first starts
+    /// </summary>
+    public void Start()
+    {
+
+    }
+
+    /// <summary>
+    /// Executed when this <see cref="Component"/>  enters the game for the first time
     /// </summary>
     public virtual void Initialize()
     {
@@ -34,9 +42,17 @@ public abstract class Component
     }
 
     /// <summary>
-    /// Executed when this component exits the game
+    /// Executed when this <see cref="Component"/> exits the game
     /// </summary>
     public virtual void Exit()
+    {
+
+    }
+
+    /// <summary>
+    /// Executed when the game ends
+    /// </summary>
+    public void End()
     {
 
     }
