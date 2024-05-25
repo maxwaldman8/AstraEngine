@@ -1,7 +1,7 @@
+using AstraEngine.Core;
+
 using Xunit;
 using Shouldly;
-
-using AstraEngine.Core;
 
 namespace AstraEngine.Tests;
 
