@@ -37,6 +37,12 @@ public interface ICanvas2D
     /// <param name="color">The color of the text</param>
     void DrawText(Position2D location, String message, Color color);
 
+    /// <summary>
+    /// Draws pixel
+    /// </summary>
+    /// <param name="location">The location of the pixel</param>
+    /// <param name="color">The color of the pixel</param>
+    void DrawPixel(Position2D location, Color color);
 
     /// <summary>This method is called at the end of a render frame.</summary>
     void EndDrawing();

@@ -29,7 +29,10 @@ public sealed class RaylibCanvas2D : ICanvas2D
         Raylib.DrawText(message, (int)location.X, (int)location.Y, 12, color.ToRayColor());
     }
 
-    
+    public void DrawPixel(Position2D location, Color color)
+    {
+        Raylib.DrawPixel((int)location.X, (int)location.Y, color.ToRayColor());
+    }
 
     /// <inheritdoc/>
     public void EndDrawing() => Raylib.EndDrawing();
