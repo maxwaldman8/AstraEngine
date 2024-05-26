@@ -25,9 +25,11 @@ public interface ICanvas2D
     /// Draws a polygon
     /// </summary>
     /// <param name="origin">The first vertex of the polygon</param>
-    /// <param name="vertices">The vertices of the polygon</param>
+    /// <param name="sides">The number of sides of the polygon</param>
+    /// <param name="radius">The radius of the polygon</param>
+    /// <param name="rotation">The rotation of the polygon</param>
     /// <param name="color">The color of the polygon</param>
-    void DrawPoly(Position2D origin, List<Position2D> Vertices, Color color);
+    void DrawPoly(Position2D origin, int sides, float radius, float rotation, Color color);
 
     /// <summary>
     /// Draws text

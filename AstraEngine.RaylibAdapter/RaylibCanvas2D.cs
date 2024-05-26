@@ -1,4 +1,5 @@
-﻿
+﻿﻿using System.Numerics;
+
 using Raylib_cs;
 
 namespace AstraEngine.Canvas2D;
@@ -13,9 +14,10 @@ public sealed class RaylibCanvas2D : ICanvas2D
     /// <inheritdoc/>
     public void Clear(Color backgroundColor) => Raylib.ClearBackground(backgroundColor.ToRayColor());
 
-    public void DrawPoly(Position2D origin, List<Position2D> Vertices, Color color)
+    public void DrawPoly(Position2D origin, int sides, float radius, float rotation, Color color)
     {
-        throw new NotImplementedException();
+        Vector2 center = new Vector2((float)origin.X, (float)origin.Y);
+        Raylib.DrawPoly(center, sides, radius, rotation, color.ToRayColor());
     }
 
     /// <inheritdoc/>

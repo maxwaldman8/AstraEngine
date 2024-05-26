@@ -5,16 +5,20 @@ namespace AstraEngine.Canvas2D;
 /// </summary>
 public class Polygon2D : Drawable
 {
-    /// <summary>The width of this rectangle</summary>
-    public List<Position2D> Vertices { get; set; }
-    
-    
-    /// <summary>The color of this rectangle</summary>
+
+    public int Sides { get; set; }
+
+    public float Radius { get; set; }
+
+    public float Rotation { get; set; }
+
+    /// <summary>The color of this polygon</summary>
     public Color Color { get; set; }
-    /// <summary>Draws this rectangle using the specified renderer</summary>
+
+    /// <summary>Draws this polygon using the specified renderer</summary>
     /// <param name="renderer"></param>
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.DrawPoly(this.Position, Vertices, Color);
+        renderer.DrawPoly(this.Position, Sides, Radius, Rotation, Color);
     }
 }
