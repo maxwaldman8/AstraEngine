@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 using Raylib_cs;
 
 namespace AstraEngine.Canvas2D;
