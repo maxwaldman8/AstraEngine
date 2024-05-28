@@ -1,6 +1,6 @@
 using AstraEngine.Core;
 
-using Raylib_CsLo;
+using ZeroElectric.Vinculum;
 
 namespace AstraEngine.Canvas2D.RaylibAdapter;
 

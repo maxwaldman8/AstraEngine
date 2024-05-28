@@ -4,5 +4,5 @@ namespace AstraEngine.Canvas2D;
 public static class ColorExtensions
 {
     /// <summary>Converts the specified Color to a Raylib.Color</summary>
-    public static Raylib_CsLo.Color ToRayColor(this Color c) => new(c.R, c.G, c.B, c.A);
+    public static ZeroElectric.Vinculum.Color ToRayColor(this Color c) => new(c.R, c.G, c.B, c.A);
 }

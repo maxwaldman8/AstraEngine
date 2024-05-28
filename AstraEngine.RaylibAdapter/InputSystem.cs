@@ -1,8 +1,8 @@
-using Raylib_CsLo;
+using ZeroElectric.Vinculum;
 
 namespace AstraEngine.InputSystem;
 
-/// <summary>An implementation of the InputSystem using Raylib-cs</summary>
+/// <summary>An implementation of the InputSystem using Raylib-CSharp-Vinculum</summary>
 public sealed class Input : IInputSystem
 {
     /// <summary>A shared instance of the input system.</summary>

@@ -1,9 +1,9 @@
-﻿using Raylib_CsLo;
+﻿using ZeroElectric.Vinculum;
 
 namespace AstraEngine.Canvas2D;
 
 /// <summary>
-/// An implementation of the <see cref="ICanvas2D"/> that is compatible with Raylib-cs.
+/// An implementation of the <see cref="ICanvas2D"/> that is compatible with Raylib-CSharp-Vinculum.
 /// </summary>
 public sealed class RaylibCanvas2D : ICanvas2D
 {
