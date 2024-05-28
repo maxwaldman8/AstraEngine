@@ -27,7 +27,7 @@ public interface ICanvas2D
     /// <param name="origin">The first vertex of the polygon</param>
     /// <param name="vertices">The vertices of the polygon</param>
     /// <param name="color">The color of the polygon</param>
-    void DrawPoly(Position2D origin, List<Position2D> Vertices, Color color);
+    void DrawPoly(Position2D origin, List<Position2D> vertices, Color color);
 
     /// <summary>
     /// Draws text

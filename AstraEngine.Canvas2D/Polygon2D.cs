@@ -7,8 +7,8 @@ public class Polygon2D : Drawable
 {
     /// <summary>The width of this rectangle</summary>
     public List<Position2D> Vertices { get; set; }
-    
-    
+
+
     /// <summary>The color of this rectangle</summary>
     public Color Color { get; set; }
     /// <summary>Draws this rectangle using the specified renderer</summary>

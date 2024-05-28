@@ -12,8 +12,8 @@ public sealed class RaylibCanvas2D : ICanvas2D
     public void BeginDrawing() => Raylib.BeginDrawing();
     /// <inheritdoc/>
     public void Clear(Color backgroundColor) => Raylib.ClearBackground(backgroundColor.ToRayColor());
-
-    public void DrawPoly(Position2D origin, List<Position2D> Vertices, Color color)
+    /// <inheritdoc/>
+    public void DrawPoly(Position2D origin, List<Position2D> vertices, Color color)
     {
         throw new NotImplementedException();
     }
@@ -23,12 +23,12 @@ public sealed class RaylibCanvas2D : ICanvas2D
     {
         Raylib.DrawRectangleRec(new Rectangle((float)topLeft.X, (float)topLeft.Y, (float)width, (float)height), color.ToRayColor());
     }
-
+    /// <inheritdoc/>
     public void DrawText(Position2D location, string message, Color color)
     {
         Raylib.DrawText(message, (int)location.X, (int)location.Y, 12, color.ToRayColor());
     }
-
+    /// <inheritdoc/>
     public void DrawPixel(Position2D location, Color color)
     {
         Raylib.DrawPixel((int)location.X, (int)location.Y, color.ToRayColor());

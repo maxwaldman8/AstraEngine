@@ -7,8 +7,8 @@ public class Text2D : Drawable
 {
     /// <summary>The string of text</summary>
     public String Message { get; set; }
-    
-    
+
+
     /// <summary>The color of this text</summary>
     public Color Color { get; set; }
     /// <summary>Draws this text using the specified renderer</summary>
