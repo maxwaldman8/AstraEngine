@@ -14,10 +14,22 @@ public static class PongExample
         game.Root.AddChild(CreatePlayer1());
         // Add player 2 to the game
         game.Root.AddChild(CreatePlayer2());
+        // Add the ball to the game
+        game.Root.AddChild(CreateBall());
         // Run the game
         Engine.Run(game);
     }
-
+    private static Entity CreateBall()
+    {
+        Entity ball = new();
+        // The ball is a white cube
+        ball.AttachComponent(new Rectangle2D() { Width = 25, Height = 25, Color = Color.White });
+        // The ball starts in the middle
+        ball.AttachComponent(new Position2D { X = 320, Y = 240 });
+        // The ball moves every tick
+        ball.AttachComponent(new Ball());
+        return ball;
+    }
     private static Entity CreatePlayer1()
     {
         Entity player = new();
