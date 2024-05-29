@@ -26,7 +26,25 @@ public sealed class RaylibCanvas2D : ICanvas2D
         Vector2 newRight = new(bottomRight.X + (float)position.X, bottomRight.Y + (float)position.Y);
         Raylib.DrawTriangle(newTop, newLeft, newRight, color.ToRayColor());
     }
-
+    /// <inheritdoc/>
+    public void DrawCircle(Position2D position, float radius, Color color)
+    {
+        int sides = 10;
+        float angle = 2 * MathF.PI / sides;
+        Vector2[] points = new Vector2[sides];
+        for (int i = 0; i < sides; i++)
+        {
+            float x = (float)position.X + radius * MathF.Cos(i * angle);
+            float y = (float)position.Y + radius * MathF.Sin(i * angle);
+            points[i] = new Vector2(x, y);
+        }
+        for (int i = 0; i < sides; i++)
+        {
+            Vector2 current = points[i];
+            Vector2 next = points[(i + 1) % sides];
+            Raylib.DrawLineV(current, next, color.ToRayColor());
+        }
+    }
     /// <inheritdoc/>
     public void EndDrawing() => Raylib.EndDrawing();
 }
