@@ -1,8 +1,9 @@
-﻿
+﻿using AstraEngine.Examples.Pong;
 using AstraEngine.Examples.PlayerMovement;
 
 (string name, Action action)[] examples =
 [
+    ("Pong", PongExample.Run),
     ("Player Movement", PlayerMovementExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
