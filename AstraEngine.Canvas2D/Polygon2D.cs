@@ -6,7 +6,7 @@ namespace AstraEngine.Canvas2D;
 public class Polygon2D : Drawable
 {
     /// <summary>The width of this rectangle</summary>
-    public List<Position2D> Vertices { get; set; }
+    public List<Position2D> Vertices { get; set; } = [];
 
 
     /// <summary>The color of this rectangle</summary>
@@ -15,6 +15,6 @@ public class Polygon2D : Drawable
     /// <param name="renderer"></param>
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.DrawPoly(this.Position, Vertices, Color);
+        renderer.DrawPoly(Position, Vertices, Color);
     }
 }

@@ -15,7 +15,7 @@ public sealed class RaylibCanvas2D : ICanvas2D
     /// <inheritdoc/>
     public void DrawPoly(Position2D origin, List<Position2D> vertices, Color color)
     {
-        throw new NotImplementedException();
+        Raylib.DrawPoly(new System.Numerics.Vector2(50, 50), 5, 30, 0, Raylib_cs.Color.Beige);
     }
 
     /// <inheritdoc/>

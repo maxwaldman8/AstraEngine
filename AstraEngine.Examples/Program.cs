@@ -5,6 +5,7 @@ using AstraEngine.Examples.PlayerMovement;
 [
     ("Player Movement", PlayerMovementExample.Run),
     ("Draw Pixels Example", DrawPixelsExample.Run),
+    ("Draw Polygons Example", DrawPolygonsExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
 
