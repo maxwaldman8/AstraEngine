@@ -1,6 +1,6 @@
+using AstraEngine.Canvas2D.RaylibAdapter;
 using AstraEngine.Core;
 using AstraEngine.Serialization;
-using AstraEngine.Canvas2D.RaylibAdapter;
 
 namespace AstraEngine.Examples.YAMLParsing;
 

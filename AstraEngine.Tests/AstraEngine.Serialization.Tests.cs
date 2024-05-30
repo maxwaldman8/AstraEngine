@@ -1,9 +1,10 @@
-using Shouldly;
-using Xunit;
-
+using AstraEngine.Canvas2D;
 using AstraEngine.Core;
 using AstraEngine.Serialization;
-using AstraEngine.Canvas2D;
+
+using Shouldly;
+
+using Xunit;
 
 namespace AstraEngine.Tests;
 
