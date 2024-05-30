@@ -7,6 +7,7 @@ namespace AstraEngine.Canvas2D;
 /// </summary>
 public class View : Component
 {
+    // public static ICanvas2D? DefaultCanvas { get; set;}
     /// <summary>The target canvas</summary>
     public required ICanvas2D Canvas { get; set; }
     /// <summary>

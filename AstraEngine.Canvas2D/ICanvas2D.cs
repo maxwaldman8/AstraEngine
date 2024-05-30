@@ -3,6 +3,7 @@ namespace AstraEngine.Canvas2D;
 /// <summary>A <see cref="ICanvas2D"/> provides methods for drawing in 2D space.</summary>
 public interface ICanvas2D
 {
+    // public static ICanvas2D 
     /// <summary>This method is called at the start of a render frame.</summary>
     void BeginDrawing();
     /// <summary>Clears the canvas with the specified color</summary>
