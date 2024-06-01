@@ -1,9 +1,11 @@
 ﻿
 using AstraEngine.Examples.PlayerMovement;
+using AstraEngine.Examples.Collisions;
 
 (string name, Action action)[] examples =
 [
     ("Player Movement", PlayerMovementExample.Run),
+    ("Collisions", Collisions.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
 
