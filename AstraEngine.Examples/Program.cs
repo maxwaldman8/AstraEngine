@@ -1,5 +1,5 @@
-﻿using AstraEngine.Examples.Pong;
-using AstraEngine.Examples.PlayerMovement;
+﻿using AstraEngine.Examples.PlayerMovement;
+using AstraEngine.Examples.Pong;
 
 (string name, Action action)[] examples =
 [
