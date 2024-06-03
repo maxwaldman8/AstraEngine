@@ -12,7 +12,6 @@ public class Entity
     public string Name { get; set; } = String.Empty;
     /// <summary>Whether or not this <see cref="Entity"/> is active</summary>
     public bool IsActive { get; set; } = true;
-    private readonly HashSet<Component> _uninitializedComponents = [];
     private readonly HashSet<Component> _components = [];
     /// <summary>An enumerable containing all of the <see cref="Component"/>s attached to this <see cref="Entity"/></summary>
     public IEnumerable<Component> Components
@@ -26,12 +25,18 @@ public class Entity
             }
         }
     }
-    private HashSet<Entity> _children = [];
+    private readonly HashSet<Entity> _children = [];
     /// <summary>An enumerable containing all of the children of this <see cref="Entity"/></summary>
     public IEnumerable<Entity> Children
     {
         get => _children;
-        init => _children = [.. value];
+        init
+        {
+            foreach (var child in value)
+            {
+                AddChild(child);
+            }
+        }
     }
 
     private Entity? _parent;
@@ -117,7 +122,6 @@ public class Entity
         if (_components.Add(component))
         {
             component.Entity = this;
-            _ = _uninitializedComponents.Add(component);
             return true;
         }
         return false;
@@ -132,7 +136,6 @@ public class Entity
     {
         if (_components.Remove(component))
         {
-            _ = _uninitializedComponents.Remove(component);
             component.Entity = null;
             return true;
         }
@@ -140,17 +143,35 @@ public class Entity
     }
 
     /// <summary>
-    /// Executed when the game first starts
+    /// Executed when the game first starts. It will not be executed if this <see cref="Entity"/> is initialized after the game starts. 
     /// </summary>
     public void Start()
     {
         if (!IsActive) { return; }
 
         // Start each component
-        foreach (var component in _components) if (component.IsActive) { component.Start(); }
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components) { if (component.IsActive) { component.Start(); } }
 
         // Start each child
-        foreach (var child in _children) { child.Start(); }
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.Start(); }
+    }
+
+    /// <summary>
+    /// Executed when this <see cref="Entity"/> enters the game for the first time
+    /// </summary>
+    public void Initialize()
+    {
+        if (!IsActive) { return; }
+
+        // Initialize each component
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components) { if (component.IsActive) { component.Initialize(); } }
+
+        // Initialize each child
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.Initialize(); }
     }
 
     /// <summary>
@@ -162,14 +183,13 @@ public class Entity
     {
         if (!IsActive) { return; }
 
-        // All uninitialized components are initialized
-        InitializeComponents();
-
         // Tick each component
-        foreach (var component in _components) if (component.IsActive) { component.Tick(deltaTime); }
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components) { if (component.IsActive) { component.Tick(deltaTime); } }
 
         // Tick each child
-        foreach (var child in _children) { child.Tick(deltaTime); }
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.Tick(deltaTime); }
     }
 
     /// <summary>
@@ -177,11 +197,15 @@ public class Entity
     /// </summary>
     public void Exit()
     {
+        if (!IsActive) { return; }
+
         // Exit each component
-        foreach (var component in _components) { component.Exit(); }
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components) { if (component.IsActive) { component.Exit(); } }
 
         // Exit each child
-        foreach (var child in _children) { child.Exit(); }
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.Exit(); }
     }
 
     /// <summary>
@@ -191,19 +215,13 @@ public class Entity
     {
         if (!IsActive) { return; }
 
-        // Start each component
-        foreach (var component in _components) if (component.IsActive) { component.End(); }
+        // End each component
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components) { if (component.IsActive) { component.End(); } }
 
-        // Start each child
-        foreach (var child in _children) { child.End(); }
-    }
-
-    private void InitializeComponents()
-    {
-        IEnumerable<Component> components = [.. _uninitializedComponents];
-        _uninitializedComponents.Clear();
-        foreach (var component in components) { component.Initialize(); }
-        foreach (var child in _children) { child.InitializeComponents(); }
+        // End each child
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.End(); }
     }
 
     /// <summary>
@@ -241,13 +259,12 @@ public class Entity
     }
 
     /// <summary>
-    /// Retrieves one of this <see cref="Entity"/>'s children
+    /// Retrieves one of <see cref="Entity"/>'s children
     /// </summary>
-    /// <param name="index">Index of child to retrieve</param>
-    /// <returns><see cref="Entity"/> if this <see cref="Entity"/>'s child at index exists else null</returns>
-    public Entity? GetChild(int index)
+    /// <returns><see cref="Entity"/> if this <see cref="Entity"/>'s has a child else null</returns>
+    public Entity? GetFirstChild()
     {
-        return Children.ToArray()[index];
+        return Children.FirstOrDefault();
     }
 
     /// <summary>
@@ -269,6 +286,7 @@ public class Entity
     {
         if (_children.Add(child))
         {
+            child.Initialize();
             child.Parent = this;
             return true;
         }

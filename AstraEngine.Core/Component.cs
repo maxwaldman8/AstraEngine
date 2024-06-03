@@ -17,15 +17,15 @@ public abstract class Component
     public bool IsActive { get; set; } = true;
 
     /// <summary>
-    /// Executed when the game first starts
+    /// Executed when the game first starts. It will not be executed if this <see cref="Component"/> is added after the game starts. 
     /// </summary>
-    public void Start()
+    public virtual void Start()
     {
 
     }
 
     /// <summary>
-    /// Executed when this <see cref="Component"/>  enters the game for the first time
+    /// Executed when this <see cref="Component"/> enters the game for the first time
     /// </summary>
     public virtual void Initialize()
     {
@@ -52,7 +52,7 @@ public abstract class Component
     /// <summary>
     /// Executed when the game ends
     /// </summary>
-    public void End()
+    public virtual void End()
     {
 
     }

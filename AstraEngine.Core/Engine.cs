@@ -13,6 +13,7 @@ public static class Engine
     {
         game.Initialize();
         game.Root.Start();
+        game.Root.Initialize();
         double lastTime = game.CurrentTime;
         while (game.IsRunning)
         {
