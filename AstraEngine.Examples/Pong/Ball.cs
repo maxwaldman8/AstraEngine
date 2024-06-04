@@ -14,6 +14,7 @@ public sealed class Ball(Rectangle2D paddle1, Rectangle2D paddle2) : Component
     private Position2D _position2D;
     /// <summary>The speed of the ball</summary>
     public double Speed { get; set; } = 25;
+    public double frames { get; set; } = 0;
     /// <summary>The direction of the ball</summary>
     public Vector2 Direction { get; set; }
     public override void Initialize()
@@ -27,24 +28,38 @@ public sealed class Ball(Rectangle2D paddle1, Rectangle2D paddle2) : Component
     }
     public override void Tick(double delta)
     {
-        if ((int)(_position2D.Y - paddle1.Position.Y) > 0 && (int)(_position2D.Y - paddle1.Position.Y) < 125)
+        if ((int)(_position2D.Y - paddle1.Position.Y) >= -125 && (int)(_position2D.Y - paddle1.Position.Y) <= 125)
         {
             if ((int)(_position2D.X + 25 - paddle1.Position.X) == 0)
             {
                 Direction = new Vector2(-Direction.X, -Direction.Y);
             }
         }
+        if (frames % 60 == 0)
+        {
+            Console.WriteLine("X1: " + (int)(_position2D.X + 25 - paddle1.Position.X));
+            Console.WriteLine("Y1: " + (int)(_position2D.Y - paddle1.Position.Y));
+            Console.WriteLine("X2: " + (int)(_position2D.X + 25 - paddle2.Position.X));
+            Console.WriteLine("Y2: " + (int)(_position2D.Y - paddle2.Position.Y));
+        }
+        frames += 1;
+        if ((int)(_position2D.X - 25 - paddle2.Position.X) == 0)
+        {
+            Direction = new Vector2(-Direction.X, -Direction.Y);
+        }
         if (_position2D.Y >= 455 || _position2D.Y <= 0)
         {
             Direction = new Vector2(Direction.X, -Direction.Y);
         }
-        if (_position2D.X <= 0 || _position2D.X >= 615)
+        if (_position2D.X >= 615)
         {
-            Direction = new Vector2(-Direction.X, Direction.Y);
+            Entity.GetComponent<Position2D>()!.X = 320;
+            Entity.GetComponent<Position2D>()!.Y = 240;
+            Console.WriteLine("hit right");
         }
 
         _position2D.X += Direction.X * Speed * delta;
         _position2D.Y += Direction.Y * -1 * Speed * delta;
-        paddle2.Entity.GetComponent<Position2D>().Y = _position2D.Y;
+        paddle2.Entity.GetComponent<Position2D>()!.Y = _position2D.Y - paddle2.Height / 5;
     }
 }

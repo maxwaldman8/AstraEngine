@@ -3,7 +3,7 @@ using AstraEngine.Examples.Pong;
 
 (string name, Action action)[] examples =
 [
-    ("Pong", PongExample.Run),
+    ("Pong (very buggy)", PongExample.Run),
     ("Player Movement", PlayerMovementExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
