@@ -37,6 +37,9 @@ public static class Collisions
         Rectangle2D rectangle2D = new Rectangle2D() { Width = 50, Height = 50, Color = Color.White, };
         player.AttachComponent(new BoxCollider2D() { Box = rectangle2D });
         player.AttachComponent(rectangle2D);
+        player.AttachComponent(new PlayerCollisionController());
         return player;
+
+        //Create new entity for enemy
     }
 }
