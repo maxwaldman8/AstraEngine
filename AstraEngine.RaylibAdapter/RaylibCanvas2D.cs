@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using System.Numerics;
 
 namespace AstraEngine.Canvas2D;
 
@@ -15,6 +16,12 @@ public sealed class RaylibCanvas2D : ICanvas2D
     public void DrawRectangle(Position2D topLeft, double width, double height, Color color)
     {
         Raylib.DrawRectangleRec(new Rectangle((float)topLeft.X, (float)topLeft.Y, (float)width, (float)height), color.ToRayColor());
+    }
+    
+    public void Drawtext(Position2D topleft, double fsize, Color color, string text)
+    {
+        Vector2 vector = new((float)topleft.X, (float)topleft.Y);
+        Raylib_cs.Raylib.DrawTextCodepoint(Raylib.LoadFont("Roboto-Regular.ttf"), 7, vector, (int) fsize, color.ToRayColor());
     }
 
     /// <inheritdoc/>

@@ -14,7 +14,7 @@ public sealed class Ball(Rectangle2D paddle1, Rectangle2D paddle2) : Component
     private Position2D _position2D;
     /// <summary>The speed of the ball</summary>
     public double Speed { get; set; } = 25;
-    public double frames { get; set; } = 0;
+    // public double frames { get; set; } = 0;
     /// <summary>The direction of the ball</summary>
     public Vector2 Direction { get; set; }
     public override void Initialize()
@@ -26,27 +26,35 @@ public sealed class Ball(Rectangle2D paddle1, Rectangle2D paddle2) : Component
         // Assert that the entity had a position (Debug.Assert is removed during a production release)
         Debug.Assert(_position2D != null, $"{nameof(Player1Controller)} requires a {nameof(Position2D)}");
     }
+    public bool IsColliding(Rectangle2D box1, Rectangle2D box2)
+    {
+        if (box1.Position.X + box1.Width < box2.Position.X || box2.Position.X + box2.Width < box1.Position.X)
+        {
+            return false;
+        }
+
+        if (box1.Position.Y + box1.Height < box2.Position.Y || box2.Position.Y + box2.Height < box1.Position.Y)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public override void Tick(double delta)
     {
-        if ((int)(_position2D.Y - paddle1.Position.Y) >= -125 && (int)(_position2D.Y - paddle1.Position.Y) <= 125)
-        {
-            if ((int)(_position2D.X + 25 - paddle1.Position.X) == 0)
-            {
-                Direction = new Vector2(-Direction.X, -Direction.Y);
-            }
-        }
-        if (frames % 60 == 0)
-        {
-            Console.WriteLine("X1: " + (int)(_position2D.X + 25 - paddle1.Position.X));
-            Console.WriteLine("Y1: " + (int)(_position2D.Y - paddle1.Position.Y));
-            Console.WriteLine("X2: " + (int)(_position2D.X + 25 - paddle2.Position.X));
-            Console.WriteLine("Y2: " + (int)(_position2D.Y - paddle2.Position.Y));
-        }
-        frames += 1;
-        if ((int)(_position2D.X - 25 - paddle2.Position.X) == 0)
+        if (IsColliding(paddle1, Entity.GetComponent<Rectangle2D>()!) || IsColliding(paddle2, Entity.GetComponent<Rectangle2D>()!))
         {
             Direction = new Vector2(-Direction.X, -Direction.Y);
         }
+        // if (frames % 60 == 0)
+        // {
+        //     Console.WriteLine("X1: " + (int)(_position2D.X + 25 - paddle1.Position.X));
+        //     Console.WriteLine("Y1: " + (int)(_position2D.Y - paddle1.Position.Y));
+        //     Console.WriteLine("X2: " + (int)(_position2D.X + 25 - paddle2.Position.X));
+        //     Console.WriteLine("Y2: " + (int)(_position2D.Y - paddle2.Position.Y));
+        // }
+        // frames += 1;
         if (_position2D.Y >= 455 || _position2D.Y <= 0)
         {
             Direction = new Vector2(Direction.X, -Direction.Y);
