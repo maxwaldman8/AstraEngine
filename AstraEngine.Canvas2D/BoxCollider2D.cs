@@ -7,7 +7,6 @@ public class BoxCollider2D : Component {
     public Rectangle2D Box { get; set; }
 
     public bool CheckCollisions(BoxCollider2D otherCollider) {
-        Console.WriteLine(otherCollider.Box.Position.X);
         double x1 = Box.Position.X;
         double y1 = Box.Position.Y;
         double x2 = otherCollider.Box.Position.X;

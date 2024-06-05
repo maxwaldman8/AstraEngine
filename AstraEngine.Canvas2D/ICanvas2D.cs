@@ -17,5 +17,6 @@ public interface ICanvas2D
     /// <param name="color">The color of the rectangle</param>
     void DrawRectangle(Position2D topLeft, double width, double height, Color color);
     /// <summary>This method is called at the end of a render frame.</summary>
+
     void EndDrawing();
 }

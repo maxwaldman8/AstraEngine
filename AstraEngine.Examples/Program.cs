@@ -4,8 +4,8 @@ using AstraEngine.Examples.Collisions;
 
 (string name, Action action)[] examples =
 [
-    ("Player Movement", PlayerMovementExample.Run),
-    ("Collisions", Collisions.Run),
+    ("Player Movement", PlayerCollisionExample.Run),
+    ("Collisions", BoxCollider2DExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
 
