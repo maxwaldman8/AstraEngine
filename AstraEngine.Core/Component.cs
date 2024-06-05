@@ -15,17 +15,11 @@ public abstract class Component
     public Entity Entity { get; internal set; }
     /// <summary>Whether or not this <see cref="Component"/> is active</summary>
     public bool IsActive { get; set; } = true;
+    /// <summary>Whether or not this <see cref="Component"/> has been initialized</summary>
+    public bool Initialized { get; internal set; } = false;
 
     /// <summary>
-    /// Executed when the game first starts. It will not be executed if this <see cref="Component"/> is added after the game starts. 
-    /// </summary>
-    public virtual void Start()
-    {
-
-    }
-
-    /// <summary>
-    /// Executed when this <see cref="Component"/> enters the game for the first time
+    /// Executed when this <see cref="Component"/> is first active. Runs before Tick. 
     /// </summary>
     public virtual void Initialize()
     {
@@ -45,14 +39,6 @@ public abstract class Component
     /// Executed when this <see cref="Component"/> exits the game
     /// </summary>
     public virtual void Exit()
-    {
-
-    }
-
-    /// <summary>
-    /// Executed when the game ends
-    /// </summary>
-    public virtual void End()
     {
 
     }

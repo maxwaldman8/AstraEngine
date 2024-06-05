@@ -128,7 +128,7 @@ public class Entity
     }
 
     /// <summary>
-    /// Detach the specified <see cref="Component"/> from this <see cref="Entity"/> if it is present.
+    /// Detach the specified <see cref="Component"/> from this <see cref="Entity"/> if it is present. 
     /// </summary>
     /// <param name="component">The <see cref="Component"/> to detach</param>
     /// <returns>true if the <see cref="Component"/> was found and removed and false otherwise.</returns>
@@ -136,6 +136,7 @@ public class Entity
     {
         if (_components.Remove(component))
         {
+            component.Exit();
             component.Entity = null;
             return true;
         }
@@ -143,23 +144,7 @@ public class Entity
     }
 
     /// <summary>
-    /// Executed when the game first starts. It will not be executed if this <see cref="Entity"/> is initialized after the game starts. 
-    /// </summary>
-    public void Start()
-    {
-        if (!IsActive) { return; }
-
-        // Start each component
-        IEnumerable<Component> components = [.. _components];
-        foreach (Component component in components) { if (component.IsActive) { component.Start(); } }
-
-        // Start each child
-        IEnumerable<Entity> children = [.. _children];
-        foreach (Entity child in children) { child.Start(); }
-    }
-
-    /// <summary>
-    /// Executed when this <see cref="Entity"/> enters the game for the first time
+    /// Initializes all uninitialized <see cref="Component"/>s. Runs before Tick. 
     /// </summary>
     public void Initialize()
     {
@@ -167,7 +152,14 @@ public class Entity
 
         // Initialize each component
         IEnumerable<Component> components = [.. _components];
-        foreach (Component component in components) { if (component.IsActive) { component.Initialize(); } }
+        foreach (Component component in components)
+        {
+            if (component.IsActive && !component.Initialized)
+            {
+                component.Initialize();
+                component.Initialized = true;
+            }
+        }
 
         // Initialize each child
         IEnumerable<Entity> children = [.. _children];
@@ -206,22 +198,6 @@ public class Entity
         // Exit each child
         IEnumerable<Entity> children = [.. _children];
         foreach (Entity child in children) { child.Exit(); }
-    }
-
-    /// <summary>
-    /// Executed when the game ends
-    /// </summary>
-    public void End()
-    {
-        if (!IsActive) { return; }
-
-        // End each component
-        IEnumerable<Component> components = [.. _components];
-        foreach (Component component in components) { if (component.IsActive) { component.End(); } }
-
-        // End each child
-        IEnumerable<Entity> children = [.. _children];
-        foreach (Entity child in children) { child.End(); }
     }
 
     /// <summary>
@@ -286,7 +262,6 @@ public class Entity
     {
         if (_children.Add(child))
         {
-            child.Initialize();
             child.Parent = this;
             return true;
         }
@@ -294,7 +269,7 @@ public class Entity
     }
 
     /// <summary>
-    /// Removes the specified Entity as a child of this component
+    /// Removes the specified Entity as a child of this component. To replace the child's parent, set child.Parent instead. 
     /// </summary>
     /// <param name="child">Child to remove</param>
     /// <returns>true if the child was found and removed and false otherwise.</returns>
