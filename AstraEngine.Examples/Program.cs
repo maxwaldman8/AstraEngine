@@ -1,9 +1,11 @@
 ﻿
+using AstraEngine.Examples.ColorSwapExample;
 using AstraEngine.Examples.PlayerMovement;
 
 (string name, Action action)[] examples =
 [
     ("Player Movement", PlayerMovementExample.Run),
+    ("ColorChange", ColorSwapExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
 
