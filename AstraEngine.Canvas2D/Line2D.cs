@@ -4,16 +4,17 @@ namespace AstraEngine.DrawLine;
 
 public class Line2D : Drawable
 {
-    public double width { get; set; }
-
-    public Color color { get; set; }
-
-    public Position2D start { get; set; }
-
-    public Position2D end { get; set; }
+    /// <summary>The width of this Line</summary>
+    public double Width { get; set; }
+    /// <summary>The color of this line</summary>
+    public Color Color { get; set; }
+    /// <summary>The Start of this line</summary>
+    public Position2D Start { get; set; }
+    /// <summary>The end of this line </summary>
+    public Position2D End { get; set; }
 
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.DrawLine(start, end, width, color);
+        renderer.DrawLine(Start, End, Width, Color);
     }
 }
