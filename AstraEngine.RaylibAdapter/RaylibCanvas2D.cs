@@ -12,10 +12,10 @@ public sealed class RaylibCanvas2D : ICanvas2D
     /// <inheritdoc/>
     public void Clear(Color backgroundColor) => Raylib.ClearBackground(backgroundColor.ToRayColor());
 
-    public void DrawLine(Position2D start, Position2D end, double width, Color color)
-    {
-        Raylib.DrawLine((int)start.X, (int)start.Y, (int)end.X, (int)end.Y, color.ToRayColor());
-    }
+    // public void DrawLine(Position2D start, Position2D end, double width, Color color)
+    // {
+    //     Raylib.DrawLine((int)start.X, (int)start.Y, (int)end.X, (int)end.Y, color.ToRayColor());
+    // }
 
     /// <inheritdoc/>
     public void DrawRectangle(Position2D topLeft, double width, double height, Color color)
