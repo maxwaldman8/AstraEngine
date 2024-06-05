@@ -22,7 +22,7 @@ public static class PlayerMovementExample
         Entity player = new();
         // The player is a white rectangle
         // player.AttachComponent(new Rectangle2D() { Width = 50, Height = 50, Color = Color.White, });
-        player.AttachComponent(new Line2D() { start = new Position2D { X = 0, Y = 0 }, end = new Position2D() { X = 50, Y = 50 }, color = Color.Red });
+        player.AttachComponent(new Line2D() { Start = new Position2D { X = 0, Y = 0 }, End = new Position2D() { X = 50, Y = 50 }, Color = Color.Red });
         // The player starts at position 50, 50
         player.AttachComponent(new Position2D { X = 50, Y = 50 });
         // The player can be controlled using the arrow keys
