@@ -9,8 +9,10 @@ public sealed class RaylibCanvas2D : ICanvas2D
 {
     /// <inheritdoc/>
     public void BeginDrawing() => Raylib.BeginDrawing();
+
     /// <inheritdoc/>
     public void Clear(Color backgroundColor) => Raylib.ClearBackground(backgroundColor.ToRayColor());
+
     /// <inheritdoc/>
     public void DrawPoly(Position2D origin, List<Position2D> vertices, Color color)
     {
