@@ -1,6 +1,6 @@
 ﻿
-using AstraEngine.Examples.PlayerMovement;
 using AstraEngine.Examples.Collisions;
+using AstraEngine.Examples.PlayerMovement;
 
 (string name, Action action)[] examples =
 [

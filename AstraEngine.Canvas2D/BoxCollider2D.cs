@@ -1,12 +1,19 @@
-using AstraEngine.Core;
+using System.Diagnostics.CodeAnalysis;
 
 using AstraEngine.Canvas2D;
+using AstraEngine.Core;
 
-public class BoxCollider2D : Component {
+/// <summary> BoxCollider Class that has a component </summary>
+public class BoxCollider2D : Component
+{
 
+    /// <summary> a box with a getter and a setter </summary>
+    [AllowNull]
     public Rectangle2D Box { get; set; }
 
-    public bool CheckCollisions(BoxCollider2D otherCollider) {
+    /// <summary>given a box collider, returns true if the boxes are colliding</summary>
+    public bool CheckCollisions(BoxCollider2D otherCollider)
+    {
         double x1 = Box.Position.X;
         double y1 = Box.Position.Y;
         double x2 = otherCollider.Box.Position.X;
@@ -45,6 +52,6 @@ public class BoxCollider2D : Component {
     */
 
     // public bool CheckCollision(Rectangle2D otherBox) {
-        
+
     // }
 }

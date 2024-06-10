@@ -12,7 +12,7 @@ public sealed class PlayerCollisionController(EnemyController enemy) : Component
     /// <summary>A reference to the entity's position</summary>
     [AllowNull]
     private Position2D _position2D;
-    private EnemyController _enemy = enemy;
+    private readonly EnemyController _enemy = enemy;
     /// <summary>The speed of the entity</summary>
     public double Speed { get; set; } = 200;
     public override void Initialize()
@@ -55,7 +55,8 @@ public sealed class PlayerCollisionController(EnemyController enemy) : Component
             _enemy.Entity.GetComponent<Rectangle2D>()!.Color = Color.Blue;
 
         }
-        else{
+        else
+        {
             Entity.GetComponent<Rectangle2D>()!.Color = Color.White;
             _enemy.Entity.GetComponent<Rectangle2D>()!.Color = Color.Red;
         }
