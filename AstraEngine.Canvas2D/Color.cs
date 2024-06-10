@@ -13,7 +13,7 @@ public record struct Color(byte R, byte G, byte B, byte A)
     public readonly static Color Green = new(255, 255, 0, 255);
     /// <summary>Blue</summary>
     public readonly static Color Blue = new(255, 0, 255, 255);
-  
+
     /// <summary>
     /// Converts a hex string into a color
     /// </summary>
