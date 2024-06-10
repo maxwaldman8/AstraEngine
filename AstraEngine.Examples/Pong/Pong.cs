@@ -28,7 +28,6 @@ public static class PongExample
     private static Entity CreateBall(Rectangle2D player1, Rectangle2D player2)
     {
         Entity ball = new();
-        ball.AttachComponent(new DrawText2d() { PosX = 50, PosY = 50, })
         // The ball is a white cube
         ball.AttachComponent(new Rectangle2D() { Width = 25, Height = 25, Color = Color.White });
         // The ball starts in the middle
@@ -39,7 +38,10 @@ public static class PongExample
     }
     private static Entity CreatePlayer2()
     {
+        // The player has a score
         Entity player = new();
+        player.AttachComponent(new DrawText2d() { PosX = 65, PosY = 50, Fsize = 50, Color = Color.White, Todraw = "Number0" });
+        player.AttachComponent(new ScoreComponent());
         // The player is a white rectangle
         player.AttachComponent(new Rectangle2D() { Width = 25, Height = 125, Color = Color.White, });
         // The player starts at the left
@@ -49,6 +51,9 @@ public static class PongExample
     private static Entity CreatePlayer1()
     {
         Entity player = new();
+        // The player has a score
+        player.AttachComponent(new DrawText2d() { PosX = 550, PosY = 50, Fsize = 50, Color = Color.White, Todraw = "Number0" });
+        player.AttachComponent(new ScoreComponent());
         // The player is a white rectangle
         player.AttachComponent(new Rectangle2D() { Width = 25, Height = 125, Color = Color.White, });
         // The player starts at the right
@@ -58,15 +63,4 @@ public static class PongExample
         return player;
     }
 
-    // private static Entity Createscore1()
-    // {
-    //     Entity score1 = new();
-    //     // The ball is a white cube
-    //     score1.AttachComponent(new Rectangle2D() { Width = 25, Height = 25, Color = Color.White });
-    //     // The ball starts in the middle
-    //     score1.AttachComponent(new Position2D { X = 320, Y = 240 });
-    //     // The ball moves every tick
-    //     score1.AttachComponent(new Ball(player1, player2));
-    //     return score1;
-    // }
 }

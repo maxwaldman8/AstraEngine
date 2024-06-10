@@ -61,6 +61,7 @@ public sealed class Ball(Rectangle2D paddle1, Rectangle2D paddle2) : Component
         }
         if (_position2D.X >= 615)
         {
+            paddle2.Entity.GetComponent<ScoreComponent>()!.Score += 1;
             Entity.GetComponent<Position2D>()!.X = 320;
             Entity.GetComponent<Position2D>()!.Y = 240;
             Console.WriteLine("hit right");

@@ -16,11 +16,11 @@ public class DrawText2d : Drawable
 
     public double Fsize { get; set; }
     /// <summary>This string is what the text is</summary>
-    public string Todraw { get; set; }
+    public string? Todraw { get; set; }
     /// <summary>Draws this rectangle using the specified renderer</summary>
     /// <param name="renderer"></param>
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.Drawtext(new Position2D { X = PosX, Y = PosY }, Fsize, Color, Todraw);
+        renderer.Drawtext(new Position2D { X = PosX, Y = PosY }, Fsize, Color, Todraw!);
     }
 }
