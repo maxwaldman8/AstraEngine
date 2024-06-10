@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AstraEngine.RaylibAdapter\AstraEngine.RaylibAdapter.csproj" />
+    <ProjectReference Include="..\AstraEngine.Serialization\AstraEngine.Serialization.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
