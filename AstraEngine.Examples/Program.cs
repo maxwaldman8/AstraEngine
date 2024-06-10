@@ -1,10 +1,12 @@
 ﻿using AstraEngine.Examples.PlayerMovement;
 using AstraEngine.Examples.YAMLParsing;
+using AstraEngine.Examples.ThreeDRendering;
 
 (string name, Action action)[] examples =
 [
     ("Player Movement", PlayerMovementExample.Run),
     ("YAML Parsing", YAMLParsingExample.Run),
+    ("3D Rendering", ThreeDRenderingExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
 
