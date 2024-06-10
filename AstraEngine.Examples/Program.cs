@@ -1,4 +1,4 @@
-using AstraEngine.Examples.ColorSwapExample;
+﻿using AstraEngine.Examples.ColorSwapExample;
 using AstraEngine.Examples.PlayerMovement;
 using AstraEngine.Examples.YAMLParsing;
 
