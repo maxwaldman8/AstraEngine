@@ -19,7 +19,7 @@ public static class PlayerMovementExample
 
     private static Entity CreatePlayer()
     {
-        Entity player = new();
+        Entity player = new() { Name = "Player" };
         // The player is a white rectangle
         // player.AttachComponent(new Rectangle2D() { Width = 50, Height = 50, Color = Color.White, });
         player.AttachComponent(new Line2D() { Start = new Position2D { X = 0, Y = 0 }, End = new Position2D() { X = 50, Y = 50 }, Color = Color.Red });
