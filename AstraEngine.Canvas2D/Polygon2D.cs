@@ -22,6 +22,6 @@ public class Polygon2D : Drawable
     /// <param name="renderer"></param>
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.DrawPoly(this.Position, Verticies, Color);
+        renderer.DrawPoly(this.Position, Verticies, Color, Rotation);
     }
 }
