@@ -1,6 +1,7 @@
-using AstraEngine.Core;
-using AstraEngine.Canvas2D;
 using System.Diagnostics.CodeAnalysis;
+
+using AstraEngine.Canvas2D;
+using AstraEngine.Core;
 
 namespace AstraEngine.View3D;
 

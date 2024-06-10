@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-using AstraEngine.View3D;
 using AstraEngine.Core;
 using AstraEngine.InputSystem;
+using AstraEngine.View3D;
 
 namespace AstraEngine.Examples.ThreeDRendering;
 

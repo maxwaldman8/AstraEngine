@@ -1,7 +1,7 @@
+using AstraEngine.Canvas2D;
+using AstraEngine.Core;
 using AstraEngine.View3D;
 using AstraEngine.View3D.RaylibAdapter;
-using AstraEngine.Core;
-using AstraEngine.Canvas2D;
 
 namespace AstraEngine.Examples.ThreeDRendering;
 
