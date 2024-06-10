@@ -12,7 +12,6 @@ public class Entity
     public string Name { get; set; } = String.Empty;
     /// <summary>Whether or not this <see cref="Entity"/> is active</summary>
     public bool IsActive { get; set; } = true;
-    private readonly HashSet<Component> _uninitializedComponents = [];
     private readonly HashSet<Component> _components = [];
     /// <summary>An enumerable containing all of the <see cref="Component"/>s attached to this <see cref="Entity"/></summary>
     public IEnumerable<Component> Components
@@ -26,12 +25,18 @@ public class Entity
             }
         }
     }
-    private HashSet<Entity> _children = [];
+    private readonly HashSet<Entity> _children = [];
     /// <summary>An enumerable containing all of the children of this <see cref="Entity"/></summary>
     public IEnumerable<Entity> Children
     {
         get => _children;
-        init => _children = [.. value];
+        init
+        {
+            foreach (var child in value)
+            {
+                AddChild(child);
+            }
+        }
     }
 
     private Entity? _parent;
@@ -117,14 +122,13 @@ public class Entity
         if (_components.Add(component))
         {
             component.Entity = this;
-            _ = _uninitializedComponents.Add(component);
             return true;
         }
         return false;
     }
 
     /// <summary>
-    /// Detach the specified <see cref="Component"/> from this <see cref="Entity"/> if it is present.
+    /// Detach the specified <see cref="Component"/> from this <see cref="Entity"/> if it is present. 
     /// </summary>
     /// <param name="component">The <see cref="Component"/> to detach</param>
     /// <returns>true if the <see cref="Component"/> was found and removed and false otherwise.</returns>
@@ -132,7 +136,7 @@ public class Entity
     {
         if (_components.Remove(component))
         {
-            _ = _uninitializedComponents.Remove(component);
+            component.Exit();
             component.Entity = null;
             return true;
         }
@@ -140,17 +144,26 @@ public class Entity
     }
 
     /// <summary>
-    /// Executed when the game first starts
+    /// Initializes all uninitialized <see cref="Component"/>s. Runs before Tick. 
     /// </summary>
-    public void Start()
+    public void Initialize()
     {
         if (!IsActive) { return; }
 
-        // Start each component
-        foreach (var component in _components) if (component.IsActive) { component.Start(); }
+        // Initialize each component
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components)
+        {
+            if (component.IsActive && !component.Initialized)
+            {
+                component.Initialize();
+                component.Initialized = true;
+            }
+        }
 
-        // Start each child
-        foreach (var child in _children) { child.Start(); }
+        // Initialize each child
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.Initialize(); }
     }
 
     /// <summary>
@@ -162,14 +175,13 @@ public class Entity
     {
         if (!IsActive) { return; }
 
-        // All uninitialized components are initialized
-        InitializeComponents();
-
         // Tick each component
-        foreach (var component in _components) if (component.IsActive) { component.Tick(deltaTime); }
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components) { if (component.IsActive) { component.Tick(deltaTime); } }
 
         // Tick each child
-        foreach (var child in _children) { child.Tick(deltaTime); }
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.Tick(deltaTime); }
     }
 
     /// <summary>
@@ -177,33 +189,15 @@ public class Entity
     /// </summary>
     public void Exit()
     {
-        // Exit each component
-        foreach (var component in _components) { component.Exit(); }
-
-        // Exit each child
-        foreach (var child in _children) { child.Exit(); }
-    }
-
-    /// <summary>
-    /// Executed when the game ends
-    /// </summary>
-    public void End()
-    {
         if (!IsActive) { return; }
 
-        // Start each component
-        foreach (var component in _components) if (component.IsActive) { component.End(); }
+        // Exit each component
+        IEnumerable<Component> components = [.. _components];
+        foreach (Component component in components) { if (component.IsActive) { component.Exit(); } }
 
-        // Start each child
-        foreach (var child in _children) { child.End(); }
-    }
-
-    private void InitializeComponents()
-    {
-        IEnumerable<Component> components = [.. _uninitializedComponents];
-        _uninitializedComponents.Clear();
-        foreach (var component in components) { component.Initialize(); }
-        foreach (var child in _children) { child.InitializeComponents(); }
+        // Exit each child
+        IEnumerable<Entity> children = [.. _children];
+        foreach (Entity child in children) { child.Exit(); }
     }
 
     /// <summary>
@@ -241,13 +235,12 @@ public class Entity
     }
 
     /// <summary>
-    /// Retrieves one of this <see cref="Entity"/>'s children
+    /// Retrieves one of <see cref="Entity"/>'s children
     /// </summary>
-    /// <param name="index">Index of child to retrieve</param>
-    /// <returns><see cref="Entity"/> if this <see cref="Entity"/>'s child at index exists else null</returns>
-    public Entity? GetChild(int index)
+    /// <returns><see cref="Entity"/> if this <see cref="Entity"/>'s has a child else null</returns>
+    public Entity? GetFirstChild()
     {
-        return Children.ToArray()[index];
+        return Children.FirstOrDefault();
     }
 
     /// <summary>
@@ -276,7 +269,7 @@ public class Entity
     }
 
     /// <summary>
-    /// Removes the specified Entity as a child of this component
+    /// Removes the specified Entity as a child of this component. To replace the child's parent, set child.Parent instead. 
     /// </summary>
     /// <param name="child">Child to remove</param>
     /// <returns>true if the child was found and removed and false otherwise.</returns>
