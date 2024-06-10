@@ -17,7 +17,7 @@ public record struct Color(byte R, byte G, byte B, byte A)
     /// <summary>
     /// Converts a hex string into a color
     /// </summary>
-    /// <param name="input">Input string</param>
+    /// <param name="hex">Input string</param>
     /// <returns>Color</returns>
     public static Color FromHexString(string hex)
     {
