@@ -15,6 +15,6 @@ public class Rectangle2D : Drawable
     /// <param name="renderer"></param>
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.DrawRectangle(this.Position, Width, Height, Color);
+        renderer.DrawRectangle(Position, Width, Height, Color);
     }
 }
