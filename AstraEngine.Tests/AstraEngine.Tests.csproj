@@ -31,6 +31,8 @@
     <ProjectReference Include="..\AstraEngine.Core\AstraEngine.Core.csproj" />
     <ProjectReference Include="..\AstraEngine.Canvas2D\AstraEngine.Canvas2D.csproj" />
     <ProjectReference Include="..\AstraEngine.InputSystem\AstraEngine.InputSystem.csproj" />
+    <ProjectReference Include="..\AstraEngine.Serialization\AstraEngine.Serialization.csproj" />
+    <ProjectReference Include="..\AstraEngine.RaylibAdapter\AstraEngine.RaylibAdapter.csproj" />
   </ItemGroup>
 
 </Project>

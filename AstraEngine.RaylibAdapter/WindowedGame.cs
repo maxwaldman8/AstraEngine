@@ -16,7 +16,7 @@ public sealed class WindowedGame : IGame
     /// <summary>Window Title</summary>
     public string Title { get; init; } = "Untitled Game";
     /// <summary>The Root element which has a <see cref="View"/>.</summary>
-    public Entity Root { get; } = new Entity() { Components = [new View() { Canvas = new RaylibCanvas2D() }] };
+    public Entity Root { get; init; } = new Entity() { Components = [new View() { Canvas = new RaylibCanvas2D() }] };
     /// <summary>
     /// The game is running if the window has not closed
     /// </summary>
