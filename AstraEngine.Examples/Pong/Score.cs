@@ -64,4 +64,3 @@ public sealed class ScoreComponent : Component
 
 
 }
-
