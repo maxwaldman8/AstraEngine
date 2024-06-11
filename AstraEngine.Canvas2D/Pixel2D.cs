@@ -5,6 +5,7 @@ namespace AstraEngine.Canvas2D;
 /// </summary>
 public class Pixel2D : Drawable
 {
+    /// <summary>color getter and setter</summary>
     public Color Color { get; set; }
     /// <summary>Draws this pixel using the specified renderer</summary>
     /// <param name="renderer"></param>
