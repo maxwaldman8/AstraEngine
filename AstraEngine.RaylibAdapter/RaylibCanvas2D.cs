@@ -19,23 +19,20 @@ public sealed class RaylibCanvas2D : ICanvas2D
         return Raylib.LoadFont(Path.Combine(Environment.CurrentDirectory, "resources", "Roboto-Regular.ttf"));
     }
 
-
     /// <inheritdoc/>
     public void Clear(Color backgroundColor) => Raylib.ClearBackground(backgroundColor.ToRayColor());
-
+    /// <inheritdoc/>   
+    public void DrawPoly(Position2D origin, int sides, float radius, float rotation, Color color)
+    {
+        Vector2 center = new((float)origin.X, (float)origin.Y);
+        Raylib.DrawPoly(center, sides, radius, rotation, color.ToRayColor());
+    }
     /// <summary>
     /// Represents a Line that can be drawn in 2D space
     /// </summary>
     public void DrawLine(Position2D start, Position2D end, double width, Color color)
     {
         Raylib.DrawLine((int)start.X, (int)start.Y, (int)end.X, (int)end.Y, color.ToRayColor());
-    }
-
-
-    /// <inheritdoc/>
-    public void DrawPoly(Position2D origin, List<Position2D> vertices, Color color)
-    {
-        Raylib.DrawPoly(new System.Numerics.Vector2((int)origin.X, (int)origin.Y), 5, 30, 0, color.ToRayColor());
     }
 
     /// <inheritdoc/>
