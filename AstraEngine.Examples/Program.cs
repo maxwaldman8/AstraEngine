@@ -1,5 +1,6 @@
 ﻿using AstraEngine.Examples.ColorSwapExample;
 using AstraEngine.Examples.PlayerMovement;
+using AstraEngine.Examples.ThreeDRendering;
 using AstraEngine.Examples.YAMLParsing;
 
 (string name, Action action)[] examples =
@@ -7,6 +8,7 @@ using AstraEngine.Examples.YAMLParsing;
     ("Player Movement", PlayerMovementExample.Run),
     ("ColorChange", ColorSwapExample.Run),
     ("YAML Parsing", YAMLParsingExample.Run),
+    ("3D Rendering", ThreeDRenderingExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
 
