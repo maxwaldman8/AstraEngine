@@ -1,3 +1,5 @@
+using AstraEngine.Examples.Collisions;
+using AstraEngine.Examples.ColorSwapExample;
 using AstraEngine.Examples.PlayerMovement;
 using AstraEngine.Examples.Pong;
 using AstraEngine.Examples.YAMLParsing;
@@ -5,7 +7,9 @@ using AstraEngine.Examples.YAMLParsing;
 (string name, Action action)[] examples =
 [
     ("Pong (very buggy)", PongExample.Run),
-    ("Player Movement", PlayerMovementExample.Run),
+    ("Player Movement", PlayerCollisionExample.Run),
+    ("Collisions", BoxCollider2DExample.Run),
+    ("ColorChange", ColorSwapExample.Run),
     ("YAML Parsing", YAMLParsingExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
