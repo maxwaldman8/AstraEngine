@@ -1,10 +1,12 @@
-﻿using AstraEngine.Examples.PlayerMovement;
+using AstraEngine.Examples.PlayerMovement;
 using AstraEngine.Examples.Pong;
+using AstraEngine.Examples.YAMLParsing;
 
 (string name, Action action)[] examples =
 [
     ("Pong (very buggy)", PongExample.Run),
     ("Player Movement", PlayerMovementExample.Run),
+    ("YAML Parsing", YAMLParsingExample.Run),
     ("Exit", () => Environment.Exit(0)),
 ];
 
