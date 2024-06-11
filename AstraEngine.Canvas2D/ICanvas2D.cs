@@ -34,6 +34,14 @@ public interface ICanvas2D
     /// <param name="radius">The radius of the decagon</param>
     /// <param name="color">The color of the decagon</param>
     void DrawCircle(Position2D position, float radius, Color color);
+
+    /// <param name="start">The start of the line</param>
+    /// <param name="width">The width of the line</param>
+    /// <param name="end">The end of the line</param>
+    /// <param name="color">The color of the line</param>
+    void DrawLine(Position2D start, Position2D end, double width, Color color);
     /// <summary>This method is called at the end of a render frame.</summary>
+    void Drawtext(Position2D topleft, double fsize, Color color, string text);
+    /// <summary>Ends the drawing</summary>
     void EndDrawing();
 }

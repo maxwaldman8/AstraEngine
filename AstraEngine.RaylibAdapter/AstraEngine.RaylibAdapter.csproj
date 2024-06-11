@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AstraEngine.Canvas2D\AstraEngine.Canvas2D.csproj" />
     <ProjectReference Include="..\AstraEngine.InputSystem\AstraEngine.InputSystem.csproj" />
+    <ProjectReference Include="..\AstraEngine.View3D\AstraEngine.View3D.csproj" />
   </ItemGroup>
 
   <ItemGroup>

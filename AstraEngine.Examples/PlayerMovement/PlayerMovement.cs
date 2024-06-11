@@ -18,10 +18,14 @@ public static class PlayerMovementExample
 
     private static Entity CreateCircle()
     {
-        Entity circle = new();
-        circle.AttachComponent(new Circle2D { Radius = 20, Color = Color.White });
-        circle.AttachComponent(new Position2D { X = 100, Y = 100 });
-        circle.AttachComponent(new MovementController());
-        return circle;
+        Entity player = new() { Name = "Player" };
+        // The player is a white rectangle
+        // player.AttachComponent(new Rectangle2D() { Width = 50, Height = 50, Color = Color.White, });
+        player.AttachComponent(new Circle2D { Radius = 20, Color = Color.White });
+        // The player starts at position 50, 50
+        player.AttachComponent(new Position2D { X = 50, Y = 50 });
+        // The player can be controlled using the arrow keys
+        player.AttachComponent(new MovementController());
+        return player;
     }
 }
