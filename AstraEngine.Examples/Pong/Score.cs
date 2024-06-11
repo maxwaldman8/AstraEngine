@@ -13,54 +13,51 @@ public sealed class ScoreComponent : Component
     {
         if (Score == 0)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number0";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number0";
         }
         else if (Score == 1)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number1";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number1";
         }
         else if (Score == 2)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number2";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number2";
         }
 
         else if (Score == 3)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number3";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number3";
         }
 
         else if (Score == 4)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number4";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number4";
         }
         else if (Score == 5)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number5";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number5";
         }
         else if (Score == 6)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number6";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number6";
         }
         else if (Score == 7)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number7";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number7";
         }
 
         else if (Score == 8)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number8";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number8";
         }
 
         else if (Score == 9)
         {
-            Entity.GetComponent<DrawText2d>()!.Todraw = "Number9";
+            Entity.GetComponent<DrawText2d>()!.Message = "Number9";
         }
         else if (Score == 10)
         {
             Raylib.CloseWindow();
         }
     }
-
-
-
 }

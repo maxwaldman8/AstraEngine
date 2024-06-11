@@ -35,9 +35,10 @@ public interface ICanvas2D
     /// Draws text
     /// </summary>
     /// <param name="location">The location of the text</param>
+    /// <param name="fontSize">The font size of the text</param>
     /// <param name="message">The message in the text</param>
     /// <param name="color">The color of the text</param>
-    void DrawText(Position2D location, String message, Color color);
+    void DrawText(Position2D location, int fontSize, String message, Color color);
 
     /// <summary>
     /// Draws pixel

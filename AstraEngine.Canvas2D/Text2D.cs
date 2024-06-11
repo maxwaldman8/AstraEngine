@@ -5,22 +5,21 @@ namespace AstraEngine.Canvas2D;
 /// </summary>
 public class DrawText2d : Drawable
 {
-    /// <summary>The color of this rectangle</summary>
+    /// <summary>The color of the text</summary>
     public Color Color { get; set; }
-    /// <summary>The up and down position of the text</summary>
+    /// <summary>The Y position of the text</summary>
     public int PosY { get; set; }
-    /// <summary>The left and right position of the text</summary>
-
+    /// <summary>The X position of the text</summary>
     public int PosX { get; set; }
-    /// <summary>The font size of the texrt</summary>
+    /// <summary>The font size of the text</summary>
+    public int FontSize { get; set; }
+    /// <summary>The message of the text</summary>
+    public string Message { get; set; } = String.Empty;
 
-    public double Fsize { get; set; }
-    /// <summary>This string is what the text is</summary>
-    public string? Todraw { get; set; }
     /// <summary>Draws this rectangle using the specified renderer</summary>
     /// <param name="renderer"></param>
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.Drawtext(new Position2D { X = PosX, Y = PosY }, Fsize, Color, Todraw!);
+        renderer.DrawText(new Position2D { X = PosX, Y = PosY }, FontSize, Message, Color);
     }
 }

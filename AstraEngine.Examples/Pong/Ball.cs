@@ -14,7 +14,6 @@ public sealed class Ball(Rectangle2D paddle1, Rectangle2D paddle2) : Component
     private Position2D _position2D;
     /// <summary>The speed of the ball</summary>
     public double Speed { get; set; } = 25;
-    // public double frames { get; set; } = 0;
     /// <summary>The direction of the ball</summary>
     public Vector2 Direction { get; set; }
     public override void Initialize()

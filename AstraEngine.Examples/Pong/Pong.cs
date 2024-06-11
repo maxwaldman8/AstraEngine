@@ -12,8 +12,6 @@ public static class PongExample
         Rectangle2D rectangle1 = player1.GetComponent<Rectangle2D>()!;
         Entity player2 = CreatePlayer2();
         Rectangle2D rectangle2 = player2.GetComponent<Rectangle2D>()!;
-        // Entity score1 = Createscore1();
-        // Entity score2 = Createscore2();
         // Create a Windowed Game
         WindowedGame game = new();
         // Add player 1 to the game
@@ -40,7 +38,7 @@ public static class PongExample
     {
         // The player has a score
         Entity player = new();
-        player.AttachComponent(new DrawText2d() { PosX = 65, PosY = 50, Fsize = 50, Color = Color.White, Todraw = "Number0" });
+        player.AttachComponent(new DrawText2d() { PosX = 65, PosY = 50, FontSize = 50, Message = "Number0", Color = Color.White });
         player.AttachComponent(new ScoreComponent());
         // The player is a white rectangle
         player.AttachComponent(new Rectangle2D() { Width = 25, Height = 125, Color = Color.White, });
@@ -52,7 +50,7 @@ public static class PongExample
     {
         Entity player = new();
         // The player has a score
-        player.AttachComponent(new DrawText2d() { PosX = 550, PosY = 50, Fsize = 50, Color = Color.White, Todraw = "Number0" });
+        player.AttachComponent(new DrawText2d() { PosX = 550, PosY = 50, FontSize = 50, Message = "Number0", Color = Color.White });
         player.AttachComponent(new ScoreComponent());
         // The player is a white rectangle
         player.AttachComponent(new Rectangle2D() { Width = 25, Height = 125, Color = Color.White, });

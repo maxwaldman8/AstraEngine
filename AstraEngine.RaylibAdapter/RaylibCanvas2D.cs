@@ -44,9 +44,9 @@ public sealed class RaylibCanvas2D : ICanvas2D
     }
 
     /// <inheritdoc/>
-    public void DrawText(Position2D location, string message, Color color)
+    public void DrawText(Position2D location, int fontSize, string message, Color color)
     {
-        Raylib.DrawText(message, (int)location.X, (int)location.Y, 12, color.ToRayColor());
+        Raylib.DrawText(message, (int)location.X, (int)location.Y, fontSize, color.ToRayColor());
     }
 
     /// <inheritdoc/>
