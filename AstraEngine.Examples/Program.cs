@@ -7,6 +7,9 @@ using AstraEngine.Examples.YAMLParsing;
 
 (string name, Action action)[] examples =
 [
+    ("Player Movement", PlayerMovementExample.Run),
+    ("Draw Pixels Example", DrawPixelsExample.Run),
+    ("Draw Polygons Example", DrawPolygonsExample.Run),
     ("Pong (very buggy)", PongExample.Run),
     ("Player Movement", PlayerCollisionExample.Run),
     ("Collisions", BoxCollider2DExample.Run),
