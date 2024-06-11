@@ -1,0 +1,26 @@
+# Game root
+Name: Root
+Components:
+# Specify type as View
+- !AstraEngine.Canvas2D.View
+  # Specify type as RaylibCanvas2D
+  # Components with types specified must have more than just the tag, so {} is used as a filler
+  # Blank ({}) means create new canvas
+  Canvas: !AstraEngine.Canvas2D.RaylibCanvas2D {}
+Children:
+# Player
+- Name: Player
+  Components:
+  # Specify type as Rectangle2D
+  - !AstraEngine.Canvas2D.Rectangle2D
+    # Specify properties
+    Width: 50
+    Height: 50
+    Color: White
+  # Specify type as Position2D
+  - !AstraEngine.Canvas2D.Position2D
+    X: 50
+    Y: 50
+  # Specify type as MovementController
+  # Components with types specified must have more than just the tag, so {} is used as a filler
+  - !AstraEngine.Examples.PlayerMovement.MovementController {}

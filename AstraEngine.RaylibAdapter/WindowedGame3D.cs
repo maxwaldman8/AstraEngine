@@ -2,12 +2,12 @@ using AstraEngine.Core;
 
 using Raylib_cs;
 
-namespace AstraEngine.Canvas2D.RaylibAdapter;
+namespace AstraEngine.View3D.RaylibAdapter;
 
 /// <summary>
-/// Creates a simple game window.
+/// Creates a simple game window with a 3D camera.
 /// </summary>
-public sealed class WindowedGame : IGame
+public sealed class WindowedGame3D : IGame
 {
     /// <summary>Window Width</summary>
     public int Width { get; init; } = 640;
@@ -15,8 +15,8 @@ public sealed class WindowedGame : IGame
     public int Height { get; init; } = 480;
     /// <summary>Window Title</summary>
     public string Title { get; init; } = "Untitled Game";
-    /// <summary>The Root element which has a <see cref="View"/>.</summary>
-    public Entity Root { get; init; } = new Entity() { Components = [new View() { Canvas = new RaylibCanvas2D() }] };
+    /// <summary>The Root element which has a <see cref="View3D"/>.</summary>
+    public Entity Root { get; } = new Entity() { Components = [new View3D() { Camera = new RaylibCamera3D() }] };
     /// <summary>
     /// The game is running if the window has not closed
     /// </summary>
