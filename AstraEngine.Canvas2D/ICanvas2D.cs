@@ -68,8 +68,16 @@ public interface ICanvas2D
     /// <param name="end">The end of the line</param>
     /// <param name="color">The color of the line</param>
     void DrawLine(Position2D start, Position2D end, double width, Color color);
+
+    /// <summary>
+    /// Draws a sprite
+    /// </summary>
+    /// <param name="fileName">The path to the sprite to draw</param>
+    /// <param name="topLeft">The top left corner of the sprite</param>
+    /// <param name="tint">The tint color of the sprite</param>
+    void DrawSprite(string fileName, Position2D topLeft, Color tint);
+
     /// <summary>This method is called at the end of a render frame.</summary>
-    void Drawtext(Position2D topleft, double fsize, Color color, string text);
     /// <summary>Ends the drawing</summary>
     void EndDrawing();
 }
