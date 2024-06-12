@@ -84,9 +84,12 @@ public sealed class RaylibCanvas2D : ICanvas2D
     }
 
     /// <inheritdoc/>
-    public void DrawSprite(string fileName, Position2D topLeft, Color tint)
+    public void DrawSprite(ITexture2D texture, Position2D topLeft, Color tint)
     {
-        Raylib.DrawTextureV(Raylib.LoadTexture(fileName), new Vector2((float)topLeft.X, (float)topLeft.Y), tint.ToRayColor());
+        if (texture is RaylibTexture2D raylibTexture)
+        {
+            Raylib.DrawTextureV(raylibTexture.Texture, new Vector2((float)topLeft.X, (float)topLeft.Y), tint.ToRayColor());
+        }
     }
 
     /// <inheritdoc/>

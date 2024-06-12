@@ -1,12 +1,26 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace AstraEngine.Canvas2D;
 
 /// <summary>
 /// Represents a Sprite that can be drawn in 2D space
 /// </summary>
-public class Sprite2D : Drawable
+public abstract class Sprite2D : Drawable
 {
+    private string _fileName = String.Empty;
     /// <summary>The file path to this sprite</summary>
-    public string FileName { get; set; } = String.Empty;
+    public string FileName
+    {
+        get => _fileName;
+        set
+        {
+            _fileName = value;
+            Texture.LoadTexture(value);
+        }
+    }
+    /// <summary>The texture that this sprite uses</summary>
+    [AllowNull]
+    public ITexture2D Texture { get; set; }
     /// <summary>The tint color of this sprite</summary>
     public Color Tint { get; set; }
 
@@ -14,6 +28,6 @@ public class Sprite2D : Drawable
     /// <param name="renderer"></param>
     public override void Draw(ICanvas2D renderer)
     {
-        renderer.DrawSprite(FileName, Position, Tint);
+        renderer.DrawSprite(Texture, Position, Tint);
     }
 }

@@ -75,10 +75,10 @@ public interface ICanvas2D
     /// <summary>
     /// Draws a sprite
     /// </summary>
-    /// <param name="fileName">The path to the sprite to draw</param>
+    /// <param name="texture">The texture of the sprite to draw</param>
     /// <param name="topLeft">The top left corner of the sprite</param>
     /// <param name="tint">The tint color of the sprite</param>
-    void DrawSprite(string fileName, Position2D topLeft, Color tint);
+    void DrawSprite(ITexture2D texture, Position2D topLeft, Color tint);
 
     /// <summary>This method is called at the end of a render frame.</summary>
     /// <summary>Ends the drawing</summary>
